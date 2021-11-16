@@ -194,6 +194,7 @@ if (url.indexOf(path2) != -1) {
     [$.url, $.group1, $.locale, $.group3, $.platform, $.group5, $.storefront, group7] = url.match(Regular);
     console.log('favorites');
     */
+    $done({ body });
 }
 
 
