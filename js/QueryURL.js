@@ -51,8 +51,8 @@ function processQuery(url, variable, parameter) {
                     console.log(variable + '=' + newUrl);
                     return pair[1];
                 } else if (parameter != undefined) {
-                    //var re = new RegExp('(' + variable + '=)([^&]*)', 'gi')
-                    newUrl = url.replace(/variable + '=' + pair[1]/, variable + '=' + parameter)
+                    var re = new RegExp('(' + variable + '=)([^&]*)', 'gi')
+                    newUrl = url.replace(re, variable + '=' + parameter)
                     console.log('replaceQueryParamter:' + newUrl)
                     return newUrl
                 }
