@@ -2,22 +2,23 @@
 README:https://github.com/VirgilClyne/iRingo
 */
 
-var url = $request.url;
+const url = $request.url;
+var newUrl = url
 
-replaceQueryParamter(url, 'cc', 'TW');
-replaceQueryParamter(url, 'card_locale', 'zh-Hans_CN');
-if (getQueryVariable(url, 'include') == 'tv') {
-    let A = getQueryVariable(url, 'q')
+newUrl = replaceQueryParamter(newUrl, 'cc', 'TW');
+newUrl = replaceQueryParamter(newUrl, 'card_locale', 'zh-Hans_CN');
+if (getQueryVariable(newUrl, 'include') == 'tv') {
+    let A = getQueryVariable(newUrl, 'q')
     newA = A.replace(/%2F[a-z]{2}-[A-Z]{2}/, '%2Fzh-TW')
-    replaceQueryParamter(url, 'q', newA)
+    newUrl = replaceQueryParamter(newUrl, 'q', newA)
 };
-if (getQueryVariable(url, 'include') == 'movies') {
-    let A = getQueryVariable(url, 'q')
+if (getQueryVariable(newUrl, 'include') == 'movies') {
+    let A = getQueryVariable(newUrl, 'q')
     newA = A.replace(/%2F[a-z]{2}-[A-Z]{2}/, '%2Fzh-TW')
-    replaceQueryParamter(url, 'q', newA)
+    newUrl = replaceQueryParamter(newUrl, 'q', newA)
 };
 
-$done(url);
+$done(newUrl);
 
 
 // 获取指定传入参数的值,url为链接,variable为参数
@@ -40,9 +41,9 @@ function getQueryVariable(url, variable) {
 function replaceQueryParamter(url, variable, parameter) {
     if (url.indexOf("?") != -1) {
         var re = new RegExp('(' + variable + '=)([^&]*)', 'gi')
-        var newUrl = url.replace(re, variable + '=' + parameter)
-        console.log('replaceQueryParamter:' + newUrl)
-        return newUrl
+        var nUrl = url.replace(re, variable + '=' + parameter)
+        console.log('replaceQueryParamter:' + nUrl)
+        return nUrl
     } else return false;
 };
 
@@ -56,13 +57,13 @@ function processQuery(url, variable, parameter) {
             var pair = vars[i].split("=");
             if (pair[0] == variable) {
                 if (parameter = undefined) {
-                    console.log(variable + '=' + newUrl);
+                    console.log(variable + '=' + nUrl);
                     return pair[1];
                 } else if (parameter != undefined) {
                     var re = new RegExp('(' + variable + '=)([^&]*)', 'gi')
-                    newUrl = url.replace(re, variable + '=' + parameter)
-                    console.log('replaceQueryParamter:' + newUrl)
-                    return newUrl
+                    nUrl = url.replace(re, variable + '=' + parameter)
+                    console.log('replaceQueryParamter:' + nUrl)
+                    return nUrl
                 }
             }
         }
