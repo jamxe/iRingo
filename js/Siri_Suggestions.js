@@ -17,7 +17,7 @@ if (processQuery(url, 'include') == 'movies') {
     processQuery(url, 'q', newA)
 };
 
-$done({ url });
+$done(url);
 
 // 查询并替换自身,url为链接,variable为参数,parameter为新值(如果有就替换)
 function processQuery(url, variable, parameter) {
