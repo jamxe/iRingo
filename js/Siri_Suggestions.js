@@ -4,17 +4,17 @@ README:https://github.com/VirgilClyne/iRingo
 
 var url = $request.url;
 
-processQuery(url, cc, TW)
-processQuery(url, card_locale, zh-Hans_CN)
-if (processQuery(url, include) == tv) {
-    let A = processQuery(url, q)
+processQuery(url, 'cc', 'TW')
+processQuery(url, 'card_locale', 'zh-Hans_CN')
+if (processQuery(url, 'include') == 'tv') {
+    let A = processQuery(url, 'q')
     newA = A.replace(/%2F[a-z]{2}-[A-Z]{2}/, '%2Fzh-TW')
-    processQuery(url, q, newA)
+    processQuery(url, 'q', newA)
 };
-if (processQuery(url, include) == movies) {
-    let A = processQuery(url, q)
+if (processQuery(url, 'include') == 'movies') {
+    let A = processQuery(url, 'q')
     newA = A.replace(/%2F[a-z]{2}-[A-Z]{2}/, '%2Fzh-TW')
-    processQuery(url, q, newA)
+    processQuery(url, 'q', newA)
 };
 
 $done({ url });
