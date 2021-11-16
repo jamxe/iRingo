@@ -186,15 +186,16 @@ if (url.indexOf(path1) != -1) {
 };
 
 if (url.indexOf(path2) != -1) {
-    let favorites = $request.body
-    $request.body = favorites.replace(sf=/[\d]{6}/g,sf=143441);
-    $.log(`🎉 ${$.name}, redirectFavorites, Finish`, `RequestBody: ${$request.body}`, '')
+    let body = $request.body
+    let favorites = body;
+    body = favorites.replace(sf=/[\d]{6}/g,sf=143441);
+    $.log(`🎉 ${$.name}, redirectFavorites, Finish`, `data = ${body}`, '')
     /*
     const Regular = /(.*)(locale=[\w-_]{2,})(.*)(pfm=[\w]{3,})(.*)(sf=[\d]{6})(.*)/;
     [$.url, $.group1, $.locale, $.group3, $.platform, $.group5, $.storefront, group7] = url.match(Regular);
     console.log('favorites');
     */
-    $done({ favorites });
+    $done({ body });
 }
 
 
